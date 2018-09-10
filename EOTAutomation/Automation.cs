@@ -98,28 +98,24 @@ namespace EOTAutomation
                             _endTime = HourElements.EndHour._0200;
                             _maxClaimable = "4.50";
                         }
-
                         else if (LoginCredentials._wbs.Equals("US1-PGBCS.10.20") && LoginCredentials._shift.Equals("nala")) //1 US1-PGBCS.10.20 (CRC) 
                         {
                             _startTime = HourElements.StartHour._1800;
                             _endTime = HourElements.EndHour._0600;
                             _maxClaimable = "7.00";
                         }
-
-                        if (LoginCredentials._wbs.Equals("US1-GMB01.05.05.03") && LoginCredentials._shift.Equals("emea")) //1 US1-PGBCS.10.20 (CRC) 
+                        else if (LoginCredentials._wbs.Equals("US1-GMB01.05.05.03") && LoginCredentials._shift.Equals("emea")) //1 US1-PGBCS.10.20 (CRC) 
                         {
                             _startTime = HourElements.StartHour._1400;
                             _endTime = HourElements.EndHour._0200;
                             _maxClaimable = "4.50";
                         }
-
                         else if (LoginCredentials._wbs.Equals("US1-GMB01.05.05.03") && LoginCredentials._shift.Equals("nala")) //1 US1-PGBCS.10.20 (CRC) 
                         {
                             _startTime = HourElements.StartHour._1800;
                             _endTime = HourElements.EndHour._0600;
                             _maxClaimable = "7.00";
                         }
-
                         else
                         {
                             Console.WriteLine("Your WBS Code and Shift are not supported at the moment. Application will close now.");
@@ -139,7 +135,7 @@ namespace EOTAutomation
                             catch (OpenQA.Selenium.Support.UI.UnexpectedTagNameException)
                             {
 
-                                Console.WriteLine("Some days are still restricted. Partial input has been done.");
+                                Console.WriteLine("Some StartShift are still restricted. Partial input has been done.");
                             }
 
                         }
@@ -154,7 +150,7 @@ namespace EOTAutomation
                             }
                             catch (OpenQA.Selenium.Support.UI.UnexpectedTagNameException)
                             {
-                                Console.WriteLine("Some days are still restricted. Partial input has been done.");
+                                Console.WriteLine("Some EndShift input are still restricted. Partial input has been done.");
                             }
 
                         }
@@ -169,13 +165,25 @@ namespace EOTAutomation
                             catch (OpenQA.Selenium.InvalidElementStateException)
                             {
 
-                                Console.WriteLine("Some days are still restricted. Partial input has been done.");
+                                Console.WriteLine("Some hours are still restricted. Partial input has been done.");
 
                             }
 
                         }
 
-                        Console.WriteLine("\nAutomation Done for this week. PLEASE VERIFY AND MANUALLY SAVE FIRST.");
+                       try
+                       {
+                            webdriver.FindElement(By.Id("go")).Click();
+                       }
+                       catch (WebDriverException)
+                       {
+                            Console.WriteLine("Cannot be saved!!!");
+                       }
+
+                        
+
+                        
+                        Console.WriteLine("\nAutomation Done for this week.");
                         Console.WriteLine("\nDo you want to automate Previous or Next week too?");
                     }
 

@@ -11,7 +11,7 @@ namespace EOTAutomation
         public class StartHour
         {
             public static string _1400 = "117";
-            public static string _1800 = "16";
+            public static string _1800 = "320";
         }
 
         public class EndHour
